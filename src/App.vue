@@ -6,6 +6,7 @@
       <div class="canteen">
         <router-link to="/Canteen">Cantine</router-link>
       </div>
+      <div></div>
       <div class="ce"><router-link to="/Ce">CE</router-link></div>
       <div class="messagerie">
         <router-link to="/Messagerie">Messagerie</router-link>
