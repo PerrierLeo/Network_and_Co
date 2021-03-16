@@ -1,7 +1,7 @@
 <template>
   <div id="main-container">
     <div class="ressource">
-      <h2>Service Communication</h2>
+      <h2>Service Commercial</h2>
     </div>
     <div id="ressource">
       <p>{{ name }}</p>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "composantCom",
+  name: "composantCommercial",
   props: ["name", "surname", "post", "mail"],
 };
 </script>

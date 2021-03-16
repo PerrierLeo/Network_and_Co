@@ -7,6 +7,7 @@
       <p>{{ name }}</p>
       <p>{{ surname }}</p>
       <p>{{ post }}</p>
+      <p>{{ mail }}</p>
     </div>
   </div>
 </template>
@@ -14,7 +15,7 @@
 <script>
 export default {
   name: "ComposantRessource",
-  props: ["name", "surname", "post"],
+  props: ["name", "surname", "post", "mail"],
 };
 </script>
 

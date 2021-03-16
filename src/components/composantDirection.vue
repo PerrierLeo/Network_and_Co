@@ -1,9 +1,9 @@
 <template>
   <div id="main-container">
     <div class="ressource">
-      <h2>Service Communication</h2>
+      <h2>Direction</h2>
     </div>
-    <div id="ressource">
+    <div id="direction">
       <p>{{ name }}</p>
       <p>{{ surname }}</p>
       <p>{{ post }}</p>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "composantCom",
+  name: "ComposantDirection",
   props: ["name", "surname", "post", "mail"],
 };
 </script>
