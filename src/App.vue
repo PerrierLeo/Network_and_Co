@@ -2,11 +2,10 @@
   <div id="app">
     <div id="nav">
       <div class="accueil"><router-link to="/">Accueil</router-link></div>
-      <div class="staff"><router-link to="/Staffs">Membres</router-link></div>
+      <div class="staff"><router-link to="/staff">Membres</router-link></div>
       <div class="canteen">
         <router-link to="/Canteen">Cantine</router-link>
       </div>
-      <div></div>
       <div class="ce"><router-link to="/Ce">CE</router-link></div>
       <div class="messagerie">
         <router-link to="/Messagerie">Messagerie</router-link>

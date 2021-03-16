@@ -6,10 +6,6 @@ import Canteen from "../views/Canteen.vue";
 import Ce from "../views/Ce.vue";
 import Messagerie from "../views/Messagerie.vue";
 
-
-
-
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -19,7 +15,7 @@ const routes = [
     component: Accueil
   },
   {
-    path: "/Staff",
+    path: "/staff",
     name: "Staff",
     component: Staffs
   },
