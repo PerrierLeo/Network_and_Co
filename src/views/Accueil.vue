@@ -1,10 +1,13 @@
 <template>
-  <div class="Accueil"></div>
+  <div class="Accueil">
+    <agenda />
+  </div>
 </template>
 
 <script>
+import Agenda from "../components/Agenda.vue";
 export default {
   name: "Accueil",
-  components: {},
+  components: { Agenda },
 };
 </script>

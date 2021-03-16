@@ -10,6 +10,10 @@
       <div class="messagerie">
         <router-link to="/Messagerie">Messagerie</router-link>
       </div>
+      <div class="ins">
+        <router-link to="/Inscription">Inscription</router-link> |
+        <router-link to="/Connexion">Connexion</router-link>
+      </div>
     </div>
     <router-view />
   </div>
@@ -52,5 +56,9 @@ body {
 
 #nav a.router-link-exact-active {
   color: white;
+}
+
+.ins {
+  margin-left: 899px;
 }
 </style>
