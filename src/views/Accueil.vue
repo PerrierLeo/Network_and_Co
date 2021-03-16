@@ -1,10 +1,19 @@
 <template>
-  <div class="Accueil"></div>
+  <div class="Accueil">
+    <publisher />
+  </div>
 </template>
 
 <script>
+
+import publisher from '../components/publisher.vue'
+
 export default {
   name: "Accueil",
-  components: {},
+  components: { publisher },
 };
 </script>
+
+<style lang="sass">
+
+</style>
