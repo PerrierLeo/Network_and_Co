@@ -5,6 +5,9 @@
 <script>
 export default {
   name: "Accueil",
-  components: {},
+
+  data: () => ({}),
+  methods: {},
 };
 </script>
+<style></style>

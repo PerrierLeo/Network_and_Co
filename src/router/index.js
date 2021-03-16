@@ -1,7 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Pageconnect from "../views/Pageconnect.vue";
 import Accueil from "../views/Accueil.vue";
-import Staffs from "../views/Staffs.vue";
+import Staffs from "../views/Staff.vue";
 import Canteen from "../views/Canteen.vue";
 import Ce from "../views/Ce.vue";
 import Messagerie from "../views/Messagerie.vue";
@@ -13,9 +14,15 @@ import Messagerie from "../views/Messagerie.vue";
 Vue.use(VueRouter);
 
 const routes = [
+
   {
-    path: "/",
-    name: "Accueil",
+    path: "/Connexion",
+    name: "/Connexion",
+    component: Pageconnect
+  },  
+  {
+    path: "/Accueil",
+    name: "/Accueil",
     component: Accueil
   },
   {
@@ -35,7 +42,7 @@ const routes = [
   },
   {
     path: "/Messagerie",
-    name: "Messagerie",
+    name: "Mssagerie",
     component: Messagerie
   },
 ];
