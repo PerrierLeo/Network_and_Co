@@ -1,19 +1,56 @@
 <template>
   <div id="app">
     <div v-if="loggedIn" id="nav">
-      <div class="accueil"><router-link to="/">Inscription</router-link></div>
+      <div>
+        <router-link to="/"></router-link>
+        <b-button-group>
+          <b-button
+            ><router-link to="/Accueil"
+              ><b-avatar
+                src="https://previews.123rf.com/images/pakkalin/pakkalin1503/pakkalin150300117/38526708-accueil-ic%C3%B4ne.jpg"
+              ></b-avatar></router-link
+          ></b-button>
+          <b-button><router-link to="/Staff">Membres</router-link></b-button>
+          <b-button><router-link to="/Canteen">Cantine</router-link></b-button>
+          <b-button><router-link to="/Ce">CE</router-link></b-button>
+          <b-button v-b-modal.modal-1 @click="profil"
+            ><b-avatar
+              src="https://previews.123rf.com/images/tanyastock/tanyastock1609/tanyastock160901582/62841748-ic%C3%B4ne-de-l-utilisateur-symbole-de-la-personne-humaine-avatar-signe-de-connexion-bouton-cercle-bleu-a.jpg"
+            ></b-avatar
+          ></b-button>
+          <b-modal id="modal-1" title="Profil">
+            <div>
+              <div class="my-4">
+                Nom :
+                <p v-show="displayValue">{{ firstname }}</p>
+                <input v-show="cachee" v-model="firstname" />
+              </div>
+            </div>
+            <div class="my-4">
+              Prénom :
+              <p v-show="displayValue">{{ lastname }}</p>
+              <input v-show="cachee" v-model="lastname" />
+            </div>
+            <div class="my-4">
+              E-mail :
+              <p v-show="displayValue">{{ email }}</p>
+              <input v-show="cachee" v-model="email" />
+            </div>
+            <b-avatar
+              href="#bar"
+              @click="modifier"
+              src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_960_720.png"
+            ></b-avatar>
 
-      <div class="accueil">
-        <router-link to="/Accueil">Accueil</router-link>
-      </div>
-      <div class="staff"><router-link to="/Staff">Membres</router-link></div>
-      <div class="canteen">
-        <router-link to="/Canteen">Cantine</router-link>
-      </div>
-      <div class="ce"><router-link to="/Ce">CE</router-link></div>
-      <div class="messagerie">
-        <router-link to="/Messagerie">Messagerie</router-link>
-        <button @click="logout">deconnexion</button>
+            <b-button
+              @click="validModifier"
+              v-show="cachee"
+              variant="outline-primary"
+              >Modifier</b-button
+            >
+          </b-modal>
+          <b-button @click="logout">deconnexion</b-button>
+        </b-button-group>
       </div>
     </div>
     <router-view />
@@ -21,25 +58,112 @@
 </template>
 <script>
 export default {
+  components: {},
   data: () => ({
     loggedIn: false,
-    ouiInscrit: true,
-    nonInscrit: true,
+    firstname: "",
+    lastname: "",
+    email: "",
+    cachee: false,
+    displayValue: true,
   }),
 
   methods: {
     login: function() {
       this.loggedIn = true;
+      this.$router.push("/Accueil");
     },
+
     logout: function() {
       this.loggedIn = false;
-      this.$router.push("/connexion");
+      localStorage.clear("token");
+      this.$router.push("/Connexion");
     },
+
+    modifier() {
+      this.cachee = !this.cachee;
+      this.displayValue = !this.displayValue;
+    },
+    validModifier: async function() {
+      this.modifier();
+      const body = {
+        firstname: this.firstname,
+        lastname: this.lastname,
+        email: this.email,
+        age: "",
+        occupation: "",
+      };
+      const options = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "baerer " + localStorage.getItem("token"),
+        },
+        body: JSON.stringify(body),
+      };
+
+      try {
+        const response = await fetch(
+          "https://network-and-co-api.osc-fr1.scalingo.io/user",
+          options
+        );
+
+        console.log(response);
+
+        const data = await response; // Lire la réponse au format JSON
+
+        console.log(data); // Body de la réponse
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    profil: async function() {
+      const options = {
+        method: "GET", // Verbe
+        headers: {
+          "Content-Type": "application/json", // En-tête du type de données envoyé
+          Authorization: "baerer " + localStorage.getItem("token"),
+        },
+      };
+
+      /* Tentative de requête */
+      try {
+        /* Envoi de la requête */
+        const response = await fetch(
+          "https://network-and-co-api.osc-fr1.scalingo.io/user",
+          options
+        );
+
+        console.log(response); // Réponse
+
+        const data = await response.json(); // Lire la réponse au format JSON
+
+        this.firstname = data.firstname;
+        this.lastname = data.lastname;
+        this.email = data.email;
+        this.post = data.occupation;
+        console.log(data);
+        return this.firstname; // Body de la réponse
+      } catch (error) {
+        /* En cas d'erreur lors de l'exécutino de la requête */
+        console.log(error);
+      }
+    },
+  },
+  mounted: async function() {
+    let token = localStorage.getItem("token");
+    if (token !== null) {
+      this.login();
+    } else {
+      this.logout();
+    }
   },
 
   provide: function() {
     return {
       login: this.login,
+      logout: this.logout,
     };
   },
 };

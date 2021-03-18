@@ -2,11 +2,16 @@
   <div class="Accueil">
     <div>
       <inscription
-        v-if="state == 'noUser'"
-        :class="{ active: isActive }"
+        v-if="state == 'noconnect'"
         @ajouter="callAjouter"
       ></inscription>
-      <connexion v-if="state == 'noconnect'" @connexion="callConnexion" />
+      <connexion v-if="state == 'connect'" @connexion="callConnexion" />
+      <p v-if="state == 'connect'" @click="state = 'noconnect'">
+        pas encore inscrit ?
+      </p>
+      <p v-if="state == 'noconnect'" @click="state = 'connect'">
+        déja inscrit ?
+      </p>
     </div>
   </div>
 </template>
@@ -16,86 +21,100 @@ import Connexion from "../components/Accueil/Connexion.vue";
 import inscription from "../components/Accueil/inscription.vue";
 export default {
   name: "Pageconnect",
-
   components: { inscription, Connexion },
 
   data: () => ({
-    isActive: false,
+    state: "connect",
     nom: "",
     prenom: "",
     date: "",
     mail: "",
     motdepasse: "",
     confmotdepasse: "",
-    state: "noUser",
-
-    tabusers: [],
   }),
+
   methods: {
-    callAjouter(payload) {
-      let isExist = false;
-      for (const elem of this.tabusers) {
-        if (elem.nom != payload.nom) {
-          isExist = false;
-        } else {
-          isExist = true;
-          alert("utilisateur déja pris");
-          break;
-        }
-      }
-      if (payload.nom == "") {
-        alert("remplir le champs nom");
-      } else if (payload.prenom == "") {
-        alert("remplir le champs prenom");
-      } else if (payload.date == "") {
-        alert("remplir le champs date");
-      } else if (payload.mail == "") {
-        alert("remplir le champs mail");
-      } else if (payload.motdepasse == "") {
-        alert("remplir le champs mot de passe");
-      } else if (payload.motdepasse != payload.confmotdepasse) {
-        alert("les mots de passe ne correspondent pas");
-      }
-      if (
-        isExist == false &&
-        payload.nom != "" &&
-        payload.prenom != "" &&
-        payload.date != "" &&
-        payload.mail != "" &&
-        payload.motdepasse != "" &&
-        payload.motdepasse == payload.confmotdepasse
-      ) {
-        let newUser = {
-          nom: payload.nom,
-          prenom: payload.prenom,
-          date: payload.date,
-          mail: payload.mail,
-          motdepasse: payload.motdepasse,
-          confmotdepasse: payload.confmotdepasse,
-        };
-        (this.state = "noconnect"), (isExist = true);
-        this.tabusers.push(newUser);
+    callAjouter: async function(payload) {
+      const body = {
+        firstname: payload.nom,
+        lastname: payload.prenom,
+        email: payload.mail,
+        password: payload.motdepasse,
+      };
+
+      /* Options de la requête */
+      const options = {
+        method: "POST", // Verbe
+        headers: {
+          "Content-Type": "application/json", // En-tête du type de données envoyé
+        },
+        body: JSON.stringify(body), // Transforme le body en JSON et défini le body de la requête
+      };
+
+      /* Tentative de requête */
+      try {
+        /* Envoi de la requête */
+        const response = await fetch(
+          "https://network-and-co-api.osc-fr1.scalingo.io/register",
+          options
+        );
+
+        console.log(response); // Réponse
+
+        const data = await response.json(); // Lire la réponse au format JSON
+        this.state = "connect";
+
+        console.log(data); // Body de la réponse
+      } catch (error) {
+        /* En cas d'erreur lors de l'exécutino de la requête */
+        console.log(error);
       }
     },
-    callConnexion(payload) {
-      for (const elem of this.tabusers) {
-        if (
-          elem.mail == payload.mailconnexion &&
-          elem.motdepasse == payload.passconnexion
-        ) {
-          this.state = "connect";
-        } else {
-          alert("erreur dans identifiants ou mot de passe");
-          break;
+
+    callConnexion: async function(payload) {
+      const body = {
+        email: payload.mailconnexion,
+        password: payload.passconnexion,
+      };
+      console.log(body);
+
+      /* Options de la requête */
+      const options = {
+        method: "POST", // Verbe
+        headers: {
+          "Content-Type": "application/json", // En-tête du type de données envoyé
+        },
+        body: JSON.stringify(body), // Transforme le body en JSON et défini le body de la requête
+      };
+
+      /* Tentative de requête */
+      try {
+        /* Envoi de la requête */
+        const response = await fetch(
+          "https://network-and-co-api.osc-fr1.scalingo.io/login",
+          options
+        );
+
+        console.log(response); // Réponse
+
+        const data = await response.json(); // Lire la réponse au format JSON
+
+        const token = data.token;
+
+        console.log(token);
+        localStorage.setItem("token", token);
+        if (token.value !== null) {
+          this.login();
         }
-      }
-      if (this.state == "connect") {
-        this.login();
-        this.$router.push("Accueil");
+        console.log(data); // Body de la réponse
+      } catch (error) {
+        /* En cas d'erreur lors de l'exécutino de la requête */
+        console.log(error);
+        this.logout();
       }
     },
   },
-  inject: ["login"],
+  inject: ["login", "logout"],
 };
 </script>
 <style></style>

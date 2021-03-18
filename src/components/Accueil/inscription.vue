@@ -1,13 +1,7 @@
 <template>
   <div class="inscription">
     <form>
-      <input
-        type="text"
-        v-model="nom"
-        :class="{ active: isActive }"
-        placeholder="Nom"
-        required
-      />
+      <input type="text" v-model="nom" placeholder="Nom" required />
       <input type="text" v-model="prenom" placeholder="Prénom" required />
       <input type="date" v-model="date" placeholder="  /  /  " required />
       <input type="email" v-model="mail" required placeholder="*****@***.**" />
@@ -31,7 +25,6 @@
 <script>
 export default {
   name: "inscription",
-  props: ["isActive"],
   components: {},
 
   data: () => ({
