@@ -71,6 +71,9 @@
       </div>
       <div></div>
     </div>
+    <agenda />
+    <cantine />
+    <ce />
   </div>
 </template>
 
@@ -78,10 +81,13 @@
 import comments from "../components/Comments.vue";
 import publisher from "../components/publisher.vue";
 import like from "../components/Like.vue";
+import Agenda from "../components/Agenda.vue";
+import Cantine from "../components/Cantine.vue";
+import Ce from "../components/Ce.vue";
 
 export default {
   name: "Accueil",
-  components: { publisher, like, comments },
+  components: { publisher, like, comments, Agenda, Cantine, Ce },
 
   data: () => ({
     posts: [],

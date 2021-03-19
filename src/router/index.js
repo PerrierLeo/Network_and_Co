@@ -10,43 +10,43 @@ import Messagerie from "../views/Messagerie.vue";
 Vue.use(VueRouter);
 
 const routes = [
-
   {
     path: "/Connexion",
     name: "/Connexion",
-    component: Pageconnect
-  },  
+    component: Pageconnect,
+  },
   {
     path: "/Accueil",
     name: "/Accueil",
-    component: Accueil
+    component: Accueil,
   },
+
   {
     path: "/staff",
     name: "Staff",
-    component: Staffs
+    component: Staffs,
   },
   {
     path: "/Canteen",
     name: "Canteen",
-    component: Canteen
+    component: Canteen,
   },
   {
     path: "/Ce",
     name: "Ce",
-    component: Ce
+    component: Ce,
   },
   {
     path: "/Messagerie",
     name: "Mssagerie",
-    component: Messagerie
+    component: Messagerie,
   },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;
