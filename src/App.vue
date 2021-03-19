@@ -14,30 +14,38 @@
           <b-button><router-link to="/Canteen">Cantine</router-link></b-button>
           <b-button><router-link to="/Ce">CE</router-link></b-button>
           <b-button v-b-modal.modal-1 @click="profil"
-            ><b-avatar
-              src="https://previews.123rf.com/images/tanyastock/tanyastock1609/tanyastock160901582/62841748-ic%C3%B4ne-de-l-utilisateur-symbole-de-la-personne-humaine-avatar-signe-de-connexion-bouton-cercle-bleu-a.jpg"
-            ></b-avatar
+            ><b-avatar :src="image"></b-avatar
           ></b-button>
           <b-modal id="modal-1" title="Profil">
             <div>
-              <div class="my-4">
-                Nom :
+              <div class="my-4, displayFlex">
+                <p>Nom :</p>
                 <p v-show="displayValue">{{ firstname }}</p>
                 <input v-show="cachee" v-model="firstname" />
               </div>
             </div>
-            <div class="my-4">
+            <div class="my-4, displayFlex">
               Prénom :
               <p v-show="displayValue">{{ lastname }}</p>
               <input v-show="cachee" v-model="lastname" />
             </div>
-            <div class="my-4">
+            <div class="my-4, displayFlex">
               E-mail :
               <p v-show="displayValue">{{ email }}</p>
               <input v-show="cachee" v-model="email" />
             </div>
+            <div class="my-4, displayFlex">
+              Poste Occupé :
+              <p v-show="displayValue">{{ occupation }}</p>
+              <input v-show="cachee" v-model="occupation" />
+            </div>
+            <div>
+              Photo de profil
+              <input v-show="cachee" v-model="image" />
+            </div>
             <b-avatar
               href="#bar"
+              v-show="displayValue"
               @click="modifier"
               src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_960_720.png"
             ></b-avatar>
@@ -46,10 +54,10 @@
               @click="validModifier"
               v-show="cachee"
               variant="outline-primary"
-              >Modifier</b-button
+              >Valider</b-button
             >
           </b-modal>
-          <b-button @click="logout">deconnexion</b-button>
+          <b-button @click="logout">Logout</b-button>
         </b-button-group>
       </div>
     </div>
@@ -64,6 +72,9 @@ export default {
     firstname: "",
     lastname: "",
     email: "",
+    occupation: "",
+    image:
+      "https://previews.123rf.com/images/tanyastock/tanyastock1609/tanyastock160901582/62841748-ic%C3%B4ne-de-l-utilisateur-symbole-de-la-personne-humaine-avatar-signe-de-connexion-bouton-cercle-bleu-a.jpg",
     cachee: false,
     displayValue: true,
   }),
@@ -91,7 +102,7 @@ export default {
         lastname: this.lastname,
         email: this.email,
         age: "",
-        occupation: "",
+        occupation: this.occupation,
       };
       const options = {
         method: "PUT",
@@ -142,7 +153,7 @@ export default {
         this.firstname = data.firstname;
         this.lastname = data.lastname;
         this.email = data.email;
-        this.post = data.occupation;
+        this.occupation = data.occupation;
         console.log(data);
         return this.firstname; // Body de la réponse
       } catch (error) {
@@ -205,5 +216,8 @@ body {
 
 #nav a.router-link-exact-active {
   color: white;
+}
+.displayFlex {
+  display: flex;
 }
 </style>
