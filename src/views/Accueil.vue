@@ -17,16 +17,15 @@
     <div class="Accueil">
       <!--accordéon ressource Humaine-->
       <h3>Ressource humaine</h3>
-      <div
-        v-for="(chercher, index) in ressource"
-        :key="(index += 2)"
-        class="accordion"
-        role="tablist"
-      >
-        <b-card no-body class="mb-1">
+      <div v-for="(elem, index) in user" :key="index">
+        <b-card no-body class="mb-1 ">
           <b-card-header header-tag="header" class="p-1" role="tab">
-            <b-button block v-b-toggle="'accordion-' + index" variant="info"
-              >{{ chercher.name }} {{ chercher.surname }}</b-button
+            <b-button
+              class="colortest"
+              block
+              v-b-toggle="'accordion-' + index"
+              variant="info"
+              >{{ elem.firstname }} {{ elem.lastname }}</b-button
             >
           </b-card-header>
           <b-collapse
@@ -35,41 +34,13 @@
             role="tabpanel"
           >
             <b-card-body>
-              <b-card-text> 💼 {{ chercher.post }}</b-card-text>
-              <b-card-text> 📧 {{ chercher.mail }}</b-card-text>
-              <b-card-text> 📞 {{ chercher.tel }}</b-card-text>
+              <b-card-text> 💼 {{}}</b-card-text>
+              <b-card-text> 📧 {{}}</b-card-text>
             </b-card-body>
           </b-collapse>
         </b-card>
       </div>
       <!--accordéon service communication-->
-      <h3>Service communication</h3>
-      <div
-        v-for="(chercher, index) in communication"
-        :key="index"
-        class="accordion2"
-        role="tablist"
-      >
-        <b-card no-body class="mb-1">
-          <b-card-header header-tag="header" class="p-1" role="tab">
-            <b-button block v-b-toggle="'accordion2-' + index" variant="info"
-              >{{ chercher.name }} {{ chercher.surname }}</b-button
-            >
-          </b-card-header>
-          <b-collapse
-            :id="'accordion2-' + index"
-            accordion="my-accordion"
-            role="tabpanel"
-          >
-            <b-card-body>
-              <b-card-text> 💼 {{ chercher.post }}</b-card-text>
-              <b-card-text> 📧 {{ chercher.mail }}</b-card-text>
-              <b-card-text> 📞 {{ chercher.tel }}</b-card-text>
-            </b-card-body>
-          </b-collapse>
-        </b-card>
-      </div>
-      <div></div>
     </div>
     <agenda />
     <cantine />
@@ -91,43 +62,38 @@ export default {
 
   data: () => ({
     posts: [],
-
-    ressource: [
-      {
-        name: "Benhacine",
-        surname: "Houssem",
-        post: "assistant RH",
-        mail: "B.H@gmail.fr",
-        tel: "07 50 60 70 80",
-      },
-
-      {
-        name: "Perrier",
-        surname: "Léo",
-        post: "chargé de communication",
-        mail: "P.L@gmail.fr",
-        tel: "07 50 60 70 80",
-      },
-    ],
-
-    communication: [
-      {
-        name: "Tortiello",
-        surname: "Alexandre",
-        post: "Acheteur",
-        mail: "A.T@gmail.fr",
-        tel: "07 50 60 70 80",
-      },
-
-      {
-        name: "Berger",
-        surname: "Emiline",
-        post: "sous-directrice",
-        mail: "B.E@gmail.fr",
-        tel: "07 50 60 70 80",
-      },
-    ],
+    user: [],
   }),
+
+  /*requette sur l'api pour recuperer les user*/
+  mounted: async function() {
+    const options = {
+      method: "GET", // Verbe
+      headers: {
+        "Content-Type": "application/json", // En-tête du type de données envoyé
+        Authorization: "baerer " + localStorage.getItem("token"),
+      },
+    };
+
+    /* Tentative de requête */
+    try {
+      /* Envoi de la requête */
+      const response = await fetch(
+        "https://network-and-co-api.osc-fr1.scalingo.io/user/all",
+        options
+      );
+
+      console.log(response); // Réponse
+
+      const data = await response.json(); // Lire la réponse au format JSON
+
+      this.user = data.users;
+      console.log(this.user);
+    } catch (error) {
+      /* En cas d'erreur lors de l'exécutino de la requête */
+      console.log(error);
+    }
+  },
 
   methods: {
     /*Fonction Publier */
@@ -199,5 +165,12 @@ h3 {
 
 .color {
   background-color: rgb(177, 250, 135);
+}
+
+.colortest {
+  background-color: #0275d8;
+}
+.colortest:hover {
+  background-color: #0275d8;
 }
 </style>
