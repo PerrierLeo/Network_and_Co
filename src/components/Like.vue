@@ -11,15 +11,10 @@ export default {
     name:"like",
 
     data: function(){
-        return{
-            countLike:0,
-        }
     },
 
     methods:{
-        increaseLike(){
-            this.countLike++
-        }
+        
     }
 }
 </script>
