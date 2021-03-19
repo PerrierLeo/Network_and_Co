@@ -29,13 +29,42 @@ data:()=>({
 methods:{
     pushPubli(){
         this.$emit('publi', {textPublish:this.textPublish})
+        this.postCloud()
+    },
+
+    postCloud : async function(){
+        const body = {
+            content:this.posts          
+        };
+
+        const options = {
+            method:"POST",
+            headers:{
+                Authorization: "bearer "
+            },
+            body: JSON.stringify(body)
+        };
+
+        try{
+            const response = await fetch("https://network-and-co-api.osc-fr1.scalingo.io/post", options);
+            console.log(response);
+
+            const data = await response.json();
+            console.log(data);
+        } 
+        catch(error){
+            console.log(error);
+        }
+    }
+    
+
     }
 }
 
 
 
 
-}
+
 
 </script>
 
@@ -48,16 +77,17 @@ methods:{
     border:1px solid black;
     position:relative;  
     border: 1px solid #D6D6D6;
+    border-radius:6px;
+    background-color:white;
+    
 }
 
 .userPublish{
-    background-color:crimson;
     padding:1vh 1vw;
     margin: 10px 0px 10px 0px;
 }
 
 .toolsPublish{
-    background-color:blue;
     padding: 1vh 1vw;
     margin: 10px 0px 10px 0px;
 }
@@ -98,12 +128,18 @@ outline:none;
 }
 
 .btnPublish{
-    background-color:burlywood;
+    background: linear-gradient(90deg, rgba(69,163,231,1) 0%, rgba(29,150,253,1) 100%);
+    color:white;
+    border-radius:5px;
     position:absolute;
     bottom:10px;
     right:10px;
     padding: 1vh 1vw;
-    
+    cursor:pointer;
+}
+.btnPublish:hover{
+    background: linear-gradient(90deg, rgba(71,176,251,1) 0%, rgba(65,155,232,1) 100%);
+
 }
 
 </style>
