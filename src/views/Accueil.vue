@@ -1,16 +1,19 @@
 <template>
   <div class="accueil">
-    <publisher @publi="pushPubli" />
-    <div class="publication" v-for="(elem, index) in posts" :key="(index += 1)">
+    <publisher />
+    <div class="publication" v-for="(elem, index) in body" :key="(index += 1)">
       <div class="topPost">
-        <div class="user"><span>Alexandre TORTIELLO</span></div>
-        <div class="postDate">{{ elem.date }}</div>
+        <div class="user"><span>{{elem.firstname}} {{elem.lastname}}</span></div>
+        <div class="postDate">{{ elem.title }}</div>
       </div>
       <div class="middlePost">
-        <div class="postText">{{ elem.text }}</div>
+        <div class="postText">{{ elem.content }} {{elem.userId}}</div>
       </div>
       <div class="bottomPost">
-        <like />
+        <button @click="liker(elem._id)">Like</button>
+        <div @click="increaseLike" class="like">
+        <span>{{countLike}} Likes</span>
+        </div>
       </div>
       <comments />
     </div>
@@ -80,18 +83,18 @@
 <script>
 import comments from "../components/Comments.vue";
 import publisher from "../components/publisher.vue";
-import like from "../components/Like.vue";
 import Agenda from "../components/Agenda.vue";
 import Cantine from "../components/Cantine.vue";
 import Ce from "../components/Ce.vue";
 
 export default {
   name: "Accueil",
-  components: { publisher, like, comments, Agenda, Cantine, Ce },
+  components: { publisher, comments, Agenda, Cantine, Ce },
 
   data: () => ({
-    posts: [],
-
+    
+    
+    body:[ ],
     ressource: [
       {
         name: "Benhacine",
@@ -130,14 +133,75 @@ export default {
   }),
 
   methods: {
-    /*Fonction Publier */
-    pushPubli(payload) {
-      let newPubli = {
-        text: payload.textPublish,
-      };
-      this.posts.push(newPubli);
+    
+    liker : async function(id){
+        
+        const body = {
+            postId:id
+        };
+        console.log(body)
+
+        const options = {
+            method:"POST",
+            headers:{
+                "Content-Type": "application/json",
+                Authorization: "bearer " + localStorage.getItem("token")
+            },
+            body: JSON.stringify(body),
+        };
+
+        try {
+            const response = await fetch(
+                "https://network-and-co-api.osc-fr1.scalingo.io/post/like", options 
+            );
+
+        console.log(response);
+        console.log(id)
+
+        const data = await response;
+        console.log(data)
+
+        } 
+        catch (error){
+            console.log(error);
+        }
+
     },
+    
   },
+
+  mounted: async function() {
+      const options = {
+        method: "GET", // Verbe
+        headers: {
+          "Content-Type": "application/json", // En-tête du type de données envoyé
+          Authorization: "bearer " + localStorage.getItem("token"),
+        },
+      };
+
+      /* Tentative de requête */
+      try {
+        /* Envoi de la requête */
+        const response = await fetch(
+          "https://network-and-co-api.osc-fr1.scalingo.io/posts",
+          options
+        );
+
+        console.log(response); // Réponse
+
+        const data = await response.json(); // Lire la réponse au format JSON
+        this.body = data.posts
+        console.log(data.posts)
+
+        
+        console.log(data);
+        return this.firstname; // Body de la réponse
+      } catch (error) {
+        /* En cas d'erreur lors de l'exécutino de la requête */
+        console.log(error);
+      }
+    },
+  
 };
 </script>
 
