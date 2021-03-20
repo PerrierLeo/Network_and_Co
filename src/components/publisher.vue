@@ -1,7 +1,7 @@
 <template>
   <div class="containerPublish">
     <div class="topPublish">
-      <div class="userPublish">{{ firstname }}</div>
+      <div class="userPublish">{{}}</div>
       <div class="toolsPublish">Outils</div>
     </div>
     <div class="publish">
@@ -16,7 +16,9 @@
         placeholder="Comment vous sentez-vous aujourd'hui?"
       ></textarea>
       <input type="url" v-model="image" placeholder="poster une photo" />
-      <div><span @click="pushPubli" class="btnPublish">Publier</span></div>
+      <div>
+        <span @click="pushPubli" class="btnPublish">Publier</span>
+      </div>
     </div>
 
     <div class="posts"></div>
@@ -25,7 +27,6 @@
 
 <script>
 export default {
-  props: ["firstname"],
   name: "publisher",
 
   data: () => ({
@@ -61,6 +62,7 @@ export default {
 
         const data = await response.json();
         console.log(data);
+        location.reload();
       } catch (error) {
         console.log(error);
       }

@@ -47,6 +47,7 @@ export default {
         console.log(id);
 
         const data = await response;
+        location.reload();
         console.log(data);
       } catch (error) {
         console.log(error);

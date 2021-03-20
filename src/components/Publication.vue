@@ -9,7 +9,8 @@
         <div class="user">
           <span
             >{{ elem.firstname }} {{ elem.lastname }}
-            <b-avatar :src="profilePicture"></b-avatar
+            <div v-for="(elem, value) in imageUser" :key="value">
+              <b-avatar src="elem.profilePicture"></b-avatar></div
           ></span>
         </div>
         <div class="postDate">{{ elem.title }}</div>
@@ -17,6 +18,7 @@
       <div class="middlePost">
         <div class="postText">{{ elem.content }}</div>
       </div>
+      <div v-if="elem.image"><img class="imagePubli" :src="elem.image" /></div>
       <div class="bottomPost"></div>
       <like :id="elem._id" />
       <div v-for="(elem, index) in elem.likes" :key="index + '1'">
@@ -41,11 +43,12 @@ import Comments from "./Comments.vue";
 import like from "./Like.vue";
 export default {
   components: { like, Comments },
-  props: ["profilePicture"],
+  props: ["profilePicture", "publiFirstname"],
   name: "publication",
 
   data: () => ({
     body: [],
+    imageUser: {},
   }),
   methods: {},
   mounted: async function() {
@@ -64,12 +67,26 @@ export default {
         "https://network-and-co-api.osc-fr1.scalingo.io/posts",
         options
       );
-
       console.log(response); // Réponse
 
       const data = await response.json(); // Lire la réponse au format JSON
       this.body = data.posts;
       console.log(this.body);
+    } catch (error) {
+      /* En cas d'erreur lors de l'exécutino de la requête */
+      console.log(error);
+    }
+    try {
+      /* Envoi de la requête */
+      const response = await fetch(
+        "https://network-and-co-api.osc-fr1.scalingo.io/user/all",
+        options
+      );
+      console.log(response); // Réponse
+
+      const datauser = await response.json();
+      this.imageUser = datauser;
+      console.log(this.imageUser);
     } catch (error) {
       /* En cas d'erreur lors de l'exécutino de la requête */
       console.log(error);
@@ -128,5 +145,10 @@ export default {
 .iLike {
   width: 1vw;
   height: 2vh;
+}
+
+.imagePubli {
+  height: 300px;
+  width: 300px;
 }
 </style>

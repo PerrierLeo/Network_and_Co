@@ -18,6 +18,9 @@
         <li v-for="(event, index) in dayevents" :key="index">
           {{ event.title }}
           {{ event.date }}
+
+          <h4>Cantine</h4>
+          <img :src="event.image" />
         </li>
       </ul>
     </div>
@@ -29,6 +32,8 @@ const events = [
   {
     date: "2021-03-23",
     title: "Salon professionnel à 09h00 le",
+    image:
+      "https://www.vinci-autoroutes.com/sites/default/files/2019-09/festival-dromadaire-janvry.png",
   },
   {
     date: "2021-03-24",

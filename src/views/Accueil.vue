@@ -2,7 +2,12 @@
   <div class="accueil">
     <div class="listMember">
       <!--accordéon ressource Humaine-->
-      <h3>Ressource humaine</h3>
+      <div>
+        <h3>Ressource humaine</h3>
+        <div></div>
+        Communication
+        <div v-if="body.occupation == 'Communication'"></div>
+      </div>
       <div v-for="(elem, index) in user" :key="index">
         <b-card no-body class="mb-1 ">
           <b-card-header header-tag="header" class="p-1" role="tab">
@@ -20,8 +25,8 @@
             role="tabpanel"
           >
             <b-card-body>
-              <b-card-text> 💼 {{}}</b-card-text>
-              <b-card-text> 📧 {{}}</b-card-text>
+              <b-card-text> 💼 {{ elem.email }}</b-card-text>
+              <b-card-text> 📧 {{ elem.occupation }}</b-card-text>
             </b-card-body>
           </b-collapse>
         </b-card>
@@ -54,9 +59,9 @@ export default {
   components: { publisher, Agenda, Cantine, Ce, Publication },
 
   data: () => ({
-    posts: [],
     user: [],
     body: [],
+    // tableau de filtre //
   }),
 
   beforeMount: async function() {
@@ -79,6 +84,7 @@ export default {
       const data = await response.json(); // Lire la réponse au format JSON
 
       this.user = data.users;
+
       console.log(this.user);
     } catch (error) {
       console.log(error);
