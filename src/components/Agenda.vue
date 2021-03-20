@@ -81,11 +81,8 @@ export default {
 </script>
 
 <style scoped>
-.Agenda {
-  float: right;
-}
-
-h4 {
-  padding-top: 30px;
+.Agenda{
+  width:20vw;
+  margin-bottom:10vh;
 }
 </style>

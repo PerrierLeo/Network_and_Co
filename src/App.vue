@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div v-if="loggedIn" id="nav">
+      <h1 class="titleWebSite">NETWORK & CO</h1>
       <div>
         <router-link to="/"></router-link>
         <b-button-group>
@@ -17,23 +18,23 @@
           ></b-button>
           <b-modal id="modal-1" title="Profil">
             <div>
-              <div class="my-4, displayFlex">
+              <div class="my-4">
                 <p>Nom :</p>
                 <p v-show="displayValue">{{ firstname }}</p>
                 <input v-show="cachee" v-model="firstname" />
               </div>
             </div>
-            <div class="my-4, displayFlex">
+            <div class="my-4">
               Prénom :
               <p v-show="displayValue">{{ lastname }}</p>
               <input v-show="cachee" v-model="lastname" />
             </div>
-            <div class="my-4, displayFlex">
+            <div class="my-4">
               E-mail :
               <p v-show="displayValue">{{ email }}</p>
               <input v-show="cachee" v-model="email" />
             </div>
-            <div class="my-4, displayFlex">
+            <div class="my-4">
               Poste Occupé :
               <p v-show="displayValue">{{ occupation }}</p>
               <input v-show="cachee" v-model="occupation" />
@@ -187,13 +188,17 @@ export default {
   color: #2c3e50;
 }
 
+button.btn.btn-secondary{
+  background-color:#0275D8;
+  border:none;
+}
+
 #nav {
   padding: 30px;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 5vh;
-  background-color: #02aa93;
+  justify-content:space-between;
+  height: 15vh;
+  background-color: #0275D8;
   width: auto;
 }
 
@@ -218,5 +223,15 @@ body {
 }
 .displayFlex {
   display: flex;
+}
+
+.btn-group{
+  justify-content:flex-end;
+}
+
+.titleWebSite{
+  color:white;
+  font-family: 'Anton', sans-serif;
+  justify-content:flex-start;
 }
 </style>

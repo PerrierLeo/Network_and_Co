@@ -5,7 +5,7 @@
             <div class="toolsPublish">Outils</div>
         </div>
         <div class="publish">
-            <input type="text" v-model="title">
+            <input class="titlePost" type="text" v-model="title" placeholder="Titre de votre publication">
             <textarea v-model="textPublish" id="areaPublish" name="areaPublish"
                         rows="7" cols="10"
                         autocomplete="off" placeholder="Comment vous sentez-vous aujourd'hui?"></textarea>
@@ -80,7 +80,7 @@ methods:{
 
 .containerPublish{
     width:40vw;
-    height:36vh;
+    height:48vh;
     overflow:hidden;
     border:1px solid black;
     position:relative;  
@@ -128,6 +128,13 @@ outline:none;
     padding-left:5px;
 }
 
+.titlePost{
+    border:none;
+    border-bottom:1px solid grey;
+    margin-left:1vw;
+    margin-right:1vw;
+}
+
 .publish{
     display:flex;
     flex-direction:column;
@@ -144,6 +151,7 @@ outline:none;
     right:10px;
     padding: 1vh 1vw;
     cursor:pointer;
+    margin-top:5vh;
 }
 .btnPublish:hover{
     background: linear-gradient(90deg, rgba(71,176,251,1) 0%, rgba(65,155,232,1) 100%);
