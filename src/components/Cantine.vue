@@ -32,9 +32,7 @@ export default {
 </script>
 
 <style scoped>
-.Cantine {
-  margin-top: 1px;
-  padding-top: 550px;
-  padding-left: 1400px;
+.Cantine{
+  width:60vw;
 }
 </style>

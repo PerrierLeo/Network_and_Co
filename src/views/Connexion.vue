@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <div class="formRegister">
     <h1>Connection</h1>
     <br />
     <br />
@@ -45,6 +46,7 @@
       </div>
       <div class="col-md-3"></div>
     </div>
+</div>
   </div>
 </template>
 
@@ -52,4 +54,16 @@
 export default {};
 </script>
 
-<style scoped></style>
+
+
+
+<style scoped>
+
+.formRegister{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+</style>

@@ -5,6 +5,7 @@
             <div class="toolsPublish">Outils</div>
         </div>
         <div class="publish">
+            <input class="titlePost" type="text" v-model="title" placeholder="Titre de votre publication">
             <textarea v-model="textPublish" id="areaPublish" name="areaPublish"
                         rows="7" cols="10"
                         autocomplete="off" placeholder="Comment vous sentez-vous aujourd'hui?"></textarea>
@@ -24,38 +25,45 @@ name: 'publisher',
 
 data:()=>({
     textPublish:"",
+    title:"",
 }),
 
 methods:{
-    pushPubli(){
-        this.$emit('publi', {textPublish:this.textPublish})
-        this.postCloud()
-    },
+   
 
-    postCloud : async function(){
+    pushPubli : async function(){
+        
         const body = {
-            content:this.posts          
+            title:this.title,
+            content:this.textPublish,
         };
 
         const options = {
             method:"POST",
             headers:{
-                Authorization: "bearer "
+                "Content-Type": "application/json",
+                Authorization: "bearer " + localStorage.getItem("token")
             },
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
         };
 
-        try{
-            const response = await fetch("https://network-and-co-api.osc-fr1.scalingo.io/post", options);
-            console.log(response);
+        try {
+            const response = await fetch(
+                "https://network-and-co-api.osc-fr1.scalingo.io/post", options 
+            );
 
-            const data = await response.json();
-            console.log(data);
+        console.log(response);
+
+        const data = await response;
+        console.log(data)
+        console.log(body)
+
         } 
-        catch(error){
+        catch (error){
             console.log(error);
         }
-    }
+
+    },
     
 
     }
@@ -72,7 +80,7 @@ methods:{
 
 .containerPublish{
     width:40vw;
-    height:36vh;
+    height:48vh;
     overflow:hidden;
     border:1px solid black;
     position:relative;  
@@ -120,6 +128,13 @@ outline:none;
     padding-left:5px;
 }
 
+.titlePost{
+    border:none;
+    border-bottom:1px solid grey;
+    margin-left:1vw;
+    margin-right:1vw;
+}
+
 .publish{
     display:flex;
     flex-direction:column;
@@ -136,6 +151,7 @@ outline:none;
     right:10px;
     padding: 1vh 1vw;
     cursor:pointer;
+    margin-top:5vh;
 }
 .btnPublish:hover{
     background: linear-gradient(90deg, rgba(71,176,251,1) 0%, rgba(65,155,232,1) 100%);

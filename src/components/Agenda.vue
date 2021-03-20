@@ -92,16 +92,13 @@ export default {
 </script>
 
 <style scoped>
-.Agenda {
-  float: right;
-}
-
 h4 {
   padding-top: 30px;
   font-family: "Anton", sans-serif;
 }
 
 .Agenda {
+  float: right;
   height: auto;
   max-width: 320px;
   background-color: rgb(255, 255, 255);

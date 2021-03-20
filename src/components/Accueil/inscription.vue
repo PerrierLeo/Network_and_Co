@@ -50,7 +50,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .active {
   background-color: red;
 }
