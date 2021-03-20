@@ -30,9 +30,3 @@ export default {
   name: "cantine",
 };
 </script>
-
-<style scoped>
-.Cantine{
-  width:60vw;
-}
-</style>

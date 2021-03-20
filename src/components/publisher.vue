@@ -1,7 +1,7 @@
 <template>
   <div class="containerPublish">
     <div class="topPublish">
-      <div class="userPublish">{{}}</div>
+      <div class="userPublish"></div>
       <div class="toolsPublish">Outils</div>
     </div>
     <div class="publish">
@@ -74,7 +74,7 @@ export default {
 <style scoped>
 .containerPublish {
   width: 40vw;
-  height: 36vh;
+  height: 55vh;
   overflow: hidden;
   border: 1px solid black;
   position: relative;

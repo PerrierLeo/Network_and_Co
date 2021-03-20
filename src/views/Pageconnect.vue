@@ -6,12 +6,16 @@
         @ajouter="callAjouter"
       ></inscription>
       <connexion v-if="state == 'connect'" @connexion="callConnexion" />
-      <p v-if="state == 'connect'" @click="state = 'noconnect'">
-        pas encore inscrit ?
+      <div class="divLinkSub">
+      <p class="linkSub" v-if="state == 'connect'" @click="state = 'noconnect'">
+        S'inscrire
       </p>
-      <p v-if="state == 'noconnect'" @click="state = 'connect'">
-        déja inscrit ?
+      </div>
+      <div class="divLinkConnect">
+      <p class="linkConnect" v-if="state == 'noconnect'" @click="state = 'connect'">
+        Se connecter
       </p>
+      </div>
     </div>
   </div>
 </template>
@@ -116,4 +120,43 @@ export default {
   inject: ["login", "logout"],
 };
 </script>
-<style></style>
+
+<style>
+
+.linkConnect{
+  cursor:pointer;
+  text-align:center;
+  padding:5px;  
+}
+
+.linkConnect:hover{
+  background-color:#f5f5f5;
+  border-radius:5px; 
+  border-bottom:grey 1px solid;  
+}
+
+.divLinkConnect{
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
+
+.linkSub{
+  cursor:pointer;
+  text-align:center;
+  padding:5px;  
+}
+
+.linkSub:hover{
+  background-color:#f5f5f5;
+  border-radius:5px; 
+  border-bottom:grey 1px solid;  
+}
+
+.divLinkSub{
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
+
+</style>
