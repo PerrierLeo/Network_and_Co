@@ -14,7 +14,7 @@
           <b-button><router-link to="/Canteen">Cantine</router-link></b-button>
           <b-button><router-link to="/Ce">CE</router-link></b-button>
           <b-button v-b-modal.modal-1 @click="profil"
-            ><b-avatar :src="image"></b-avatar
+            ><b-avatar :src="profilePicture"></b-avatar
           ></b-button>
           <b-modal id="modal-1" title="Profil">
             <div>
@@ -41,7 +41,7 @@
             </div>
             <div>
               Photo de profil
-              <input v-show="cachee" v-model="image" />
+              <input v-show="cachee" v-model="profilePicture" />
             </div>
             <b-avatar
               href="#bar"
@@ -66,15 +66,13 @@
 </template>
 <script>
 export default {
-  components: {},
   data: () => ({
     loggedIn: false,
     firstname: "",
     lastname: "",
     email: "",
     occupation: "",
-    image:
-      "https://previews.123rf.com/images/tanyastock/tanyastock1609/tanyastock160901582/62841748-ic%C3%B4ne-de-l-utilisateur-symbole-de-la-personne-humaine-avatar-signe-de-connexion-bouton-cercle-bleu-a.jpg",
+    profilePicture: "",
     cachee: false,
     displayValue: true,
   }),
@@ -102,6 +100,7 @@ export default {
         lastname: this.lastname,
         email: this.email,
         age: "",
+        profilePicture: this.profilePicture,
         occupation: this.occupation,
       };
       const options = {
@@ -154,6 +153,7 @@ export default {
         this.lastname = data.lastname;
         this.email = data.email;
         this.occupation = data.occupation;
+        this.profilePicture = data.profilePicture;
         console.log(data);
         return this.firstname; // Body de la réponse
       } catch (error) {

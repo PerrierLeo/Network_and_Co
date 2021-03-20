@@ -1,6 +1,6 @@
 <template>
-<div class="accueil">
-  <div class="listMember">
+  <div class="accueil">
+    <div class="listMember">
       <!--accordéon ressource Humaine-->
       <h3>Ressource humaine</h3>
       <div v-for="(elem, index) in user" :key="index">
@@ -28,48 +28,37 @@
       </div>
       <!--accordéon service communication-->
     </div>
-  <div class="filActu">
-    <publisher />
-    <div class="publication" v-for="(elem, index) in this.body" :key="(index += 1)">
-      <div class="topPost">
-        <div class="user"><span>{{elem.firstname}} {{elem.lastname}}</span></div>
-        <div class="postDate">{{ elem.title }}</div>
-      </div>
-      <div class="middlePost">
-        <div class="postText">{{ elem.content }}</div>
-      </div>
-      <div class="bottomPost">
-        <button @click="liker(elem._id)">Like</button>
-        </div>
-      <comments />
-    </div>
+    <div class="filActu">
+      <publisher />
+      <publication :profilePicture="profilePicture" />
+      <!--<comments />-->
     </div>
     <div class="widgets">
-    <agenda />
-    <cantine />
-    <ce />
+      <agenda />
+      <cantine />
+      <ce />
     </div>
-</div>
+  </div>
 </template>
 
 <script>
-import comments from "../components/Comments.vue";
 import publisher from "../components/publisher.vue";
 import Agenda from "../components/Agenda.vue";
 import Cantine from "../components/Cantine.vue";
 import Ce from "../components/Ce.vue";
+import Publication from "../components/Publication.vue";
 
 export default {
   name: "Accueil",
-  components: { publisher, comments, Agenda, Cantine, Ce },
+  props: ["profilePicture"],
+  components: { publisher, Agenda, Cantine, Ce, Publication },
 
   data: () => ({
-    body: [],
     posts: [],
     user: [],
+    body: [],
   }),
 
-  /*requette sur l'api pour recuperer les user*/
   beforeMount: async function() {
     const option = {
       method: "GET", // Verbe
@@ -79,9 +68,7 @@ export default {
       },
     };
 
-    /* Tentative de requête */
     try {
-      /* Envoi de la requête */
       const response = await fetch(
         "https://network-and-co-api.osc-fr1.scalingo.io/user/all",
         option
@@ -94,135 +81,28 @@ export default {
       this.user = data.users;
       console.log(this.user);
     } catch (error) {
-      /* En cas d'erreur lors de l'exécutino de la requête */
       console.log(error);
     }
   },
 
-  methods: {
-    
-    liker : async function(id){
-        
-        const body = {
-            postId:id
-        };
-        console.log(body)
-
-        const options = {
-            method:"POST",
-            headers:{
-                "Content-Type": "application/json",
-                Authorization: "bearer " + localStorage.getItem("token")
-            },
-            body: JSON.stringify(body),
-        };
-
-        try {
-            const response = await fetch(
-                "https://network-and-co-api.osc-fr1.scalingo.io/post/like", options 
-            );
-
-        console.log(response);
-        console.log(id)
-
-        const data = await response;
-        console.log(data)
-
-        } 
-        catch (error){
-            console.log(error);
-        }
-
-    },
-    
-  },
-  
-  
-  mounted: async function() {
-      const options = {
-        method: "GET", // Verbe
-        headers: {
-          "Content-Type": "application/json", // En-tête du type de données envoyé
-          Authorization: "bearer " + localStorage.getItem("token"),
-        },
-      };
-
-      /* Tentative de requête */
-      try {
-        /* Envoi de la requête */
-        const response = await fetch(
-          "https://network-and-co-api.osc-fr1.scalingo.io/posts",
-          options
-        );
-
-        console.log(response); // Réponse
-
-        const data = await response.json(); // Lire la réponse au format JSON
-        this.body = data.posts
-        console.log(data.posts)
-
-        
-        console.log(data);
-        return this.firstname; // Body de la réponse
-      } catch (error) {
-        /* En cas d'erreur lors de l'exécutino de la requête */
-        console.log(error);
-      }
-    }, 
-  
-}
+  methods: {},
+};
 </script>
 
 <style scoped>
-.widgets{
-  display:flex;
-  flex-direction:column;
-}
-.accueil{
-  width:98vw;
-  display:flex;
-}
-.filActu{
-  display:flex;
-  flex-direction:column;
-  margin-left:10vw;
-  margin-right:10vw;
-  
-}
-
-.publication {
-  width: 40vw;
-  margin-top: 20px;
-  padding: 10px 0px 10px 0px;
-  height: auto;
-  overflow: hidden;
-  border: 1px solid #d6d6d6;
-  position: relative;
-  border-radius: 6px;
-  background-color: white;
-}
-
-.topPost {
+.widgets {
   display: flex;
-  margin-left: 1.5vh;
-  justify-content: flex-start;
-  width: 12vw;
-  padding-top: 1px;
+  flex-direction: column;
 }
-
-.middlePost {
-  margin-top: 10px;
-}
-
-.bottomPost {
+.accueil {
+  width: 98vw;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-right: 1.5vh;
 }
-
-.user {
-  font-weight: bold;
+.filActu {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10vw;
+  margin-right: 10vw;
 }
 
 .accordion,
@@ -231,10 +111,10 @@ export default {
 }
 
 h3 {
-  font-family:'Anton', sans-serif;
-  color:#737373;
-  margin-top:5vh;
-  font-size:1.5rem;
+  font-family: "Anton", sans-serif;
+  color: #737373;
+  margin-top: 5vh;
+  font-size: 1.5rem;
 }
 
 #accordion-8 {

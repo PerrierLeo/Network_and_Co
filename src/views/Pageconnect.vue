@@ -27,7 +27,6 @@ export default {
     state: "connect",
     nom: "",
     prenom: "",
-    date: "",
     mail: "",
     motdepasse: "",
     confmotdepasse: "",
@@ -40,6 +39,7 @@ export default {
         lastname: payload.prenom,
         email: payload.mail,
         password: payload.motdepasse,
+        occupation: payload.occupation,
       };
 
       /* Options de la requête */
@@ -50,7 +50,6 @@ export default {
         },
         body: JSON.stringify(body), // Transforme le body en JSON et défini le body de la requête
       };
-
       /* Tentative de requête */
       try {
         /* Envoi de la requête */

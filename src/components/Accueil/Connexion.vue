@@ -21,6 +21,7 @@
 <script>
 export default {
   name: "Connexion",
+  props: ["firstname", "lastname"],
   components: {},
 
   data: () => ({

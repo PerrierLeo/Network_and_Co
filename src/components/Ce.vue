@@ -33,9 +33,4 @@ export default {
 };
 </script>
 
-<style>
-.Ce {
-  padding-left: 1370px;
-  margin-left: 31px;
-}
-</style>
+<style></style>
