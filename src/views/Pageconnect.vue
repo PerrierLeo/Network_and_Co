@@ -10,7 +10,7 @@
         pas encore inscrit ?
       </p>
       <p v-if="state == 'noconnect'" @click="state = 'connect'">
-        déja inscrit ? modif
+        déja inscrit ?
       </p>
     </div>
   </div>

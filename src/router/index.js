@@ -4,53 +4,44 @@ import Pageconnect from "../views/Pageconnect.vue";
 import Accueil from "../views/Accueil.vue";
 import Staffs from "../views/Staff.vue";
 import Canteen from "../views/Canteen.vue";
-import Ce from "../views/Ce.vue";
 import Messagerie from "../views/Messagerie.vue";
-
-
-
-
 
 Vue.use(VueRouter);
 
 const routes = [
-
   {
     path: "/Connexion",
     name: "/Connexion",
-    component: Pageconnect
-  },  
+    component: Pageconnect,
+  },
   {
     path: "/Accueil",
     name: "/Accueil",
-    component: Accueil
+    component: Accueil,
   },
+
   {
-    path: "/Staff",
+    path: "/staff",
     name: "Staff",
-    component: Staffs
+    component: Staffs,
   },
   {
     path: "/Canteen",
     name: "Canteen",
-    component: Canteen
+    component: Canteen,
   },
-  {
-    path: "/Ce",
-    name: "Ce",
-    component: Ce
-  },
+  
   {
     path: "/Messagerie",
     name: "Mssagerie",
-    component: Messagerie
+    component: Messagerie,
   },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;

@@ -1,10 +1,14 @@
 <template>
-  <div class="Ce"></div>
+  <div class="Accueil"></div>
 </template>
 
 <script>
 export default {
-  name: "Ce",
+  name: "Staff",
   components: {},
 };
 </script>
+
+<style scoped>
+
+</style>
