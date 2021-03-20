@@ -30,7 +30,7 @@
     </div>
   <div class="filActu">
     <publisher />
-    <div class="publication" v-for="(elem, index) in body" :key="(index += 1)">
+    <div class="publication" v-for="(elem, index) in this.body" :key="(index += 1)">
       <div class="topPost">
         <div class="user"><span>{{elem.firstname}} {{elem.lastname}}</span></div>
         <div class="postDate">{{ elem.title }}</div>
@@ -40,10 +40,7 @@
       </div>
       <div class="bottomPost">
         <button @click="liker(elem._id)">Like</button>
-        <div @click="increaseLike" class="like">
-        <span>{{countLike}} Likes</span>
         </div>
-      </div>
       <comments />
     </div>
     </div>
@@ -67,6 +64,7 @@ export default {
   components: { publisher, comments, Agenda, Cantine, Ce },
 
   data: () => ({
+    body: [],
     posts: [],
     user: [],
   }),

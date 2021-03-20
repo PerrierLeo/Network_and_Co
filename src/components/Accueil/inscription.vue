@@ -1,9 +1,9 @@
 <template>
   <div class="inscription">
-    <form>
+    <h1>Network & Co</h1>
+    <form class="formulaire">
       <input type="text" v-model="nom" placeholder="Nom" required />
       <input type="text" v-model="prenom" placeholder="Prénom" required />
-      <input type="date" v-model="date" placeholder="  /  /  " required />
       <input type="email" v-model="mail" required placeholder="*****@***.**" />
       <input
         type="password"
@@ -51,12 +51,31 @@ export default {
 };
 </script>
 <style scoped>
+
 .active {
   background-color: red;
 }
 
-.inscription {
+.inscription{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+
+}
+.formulaire {
+  border-radius:15px;
+  background-color:#0275D8;
+  padding:30px;
+  margin-left:10vw;
+  width:20vw;
   display: flex;
   flex-direction: column;
+}
+
+input{
+  margin-bottom:20px;
+  border-radius:8px;
+  border:none;
 }
 </style>
