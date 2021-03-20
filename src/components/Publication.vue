@@ -19,11 +19,18 @@
       <div class="middlePost">
         <div class="postText">{{ elem.content }}</div>
       </div>
-      <div class="bottomPost"></div>
-      <like :id="elem._id" />
-      <div v-for="(elem, index) in elem.likes" :key="index + '1'">
-        {{ elem.firstname }} {{ elem.lastname }}
-        <img class="iLike" src="../assets/jaime.png" />
+      <div class="bottomPost">
+        <div>
+          <like :id="elem._id" />
+        </div>
+        <div
+          class="likeName"
+          v-for="(elem, index) in elem.likes"
+          :key="index + '1'"
+        >
+          {{ elem.firstname }} {{ elem.lastname }}
+          <img class="iLike" src="../assets/jaime.png" />
+        </div>
       </div>
       <!-- commentaire -->
       <comments :id="elem._id" />
@@ -32,7 +39,10 @@
         v-for="(elem, index) in elem.comments"
         :key="'3' + index"
       >
-        {{ elem.firstname }} {{ elem.lastname }} : {{ elem.content }}
+        <span class="nameComment"
+          >{{ elem.firstname }} {{ elem.lastname }}</span
+        >
+        : {{ elem.content }}
       </div>
     </div>
   </div>
@@ -81,6 +91,13 @@ export default {
 </script>
 
 <style scoped>
+.nameComment {
+  font-weight: bold;
+  justify-content: flex-start;
+}
+.likeName {
+  margin-top: 5px;
+}
 .postText {
   display: flex;
   justify-content: flex-start;
@@ -127,6 +144,10 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   margin-right: 1.5vh;
+  margin-top: 20vh;
+  background-color: #f2f0f0;
+  width: 100%;
+  padding: 5px;
 }
 
 .user {
@@ -139,10 +160,11 @@ export default {
   padding: 10px 0px 10px 0px;
   height: auto;
   overflow: hidden;
-  border: 1px solid #d6d6d6;
   position: relative;
   border-radius: 6px;
-  background-color: white;
+  background-color: #f2f0f0;
+  width: 98%;
+  justify-content: center;
 }
 .iLike {
   width: 1vw;

@@ -68,8 +68,10 @@ export default {
   margin-bottom: 6px;
 }
 .commentInput {
+  margin-bottom: 8px;
   border: none;
   width: 80%;
+  color: #f7f7f7;
 }
 .areaComments {
   display: flex;
