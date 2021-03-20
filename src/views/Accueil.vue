@@ -8,6 +8,7 @@
     <cardmember :service="'Commercial'" />
     <h3>Service Comptabilité</h3>
     <cardmember :service="'Comptabilité'" />
+    q
     <div class="filActu">
       <publisher />
       <publication :profilePicture="profilePicture" />
