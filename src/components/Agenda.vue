@@ -9,12 +9,12 @@
       locale="en"
     ></b-calendar>
 
-    <div>
-      <h4>Evenements</h4>
+    <div class="evenement">
+      <h4>Evénements</h4>
     </div>
 
     <div>
-      <ul>
+      <ul class="ul">
         <li v-for="(event, index) in dayevents" :key="index">
           {{ event.title }}
           {{ event.date }}
@@ -27,24 +27,35 @@
 <script>
 const events = [
   {
-    date: "2021-03-16",
-    title: "Salon professionnel",
-  },
-  {
-    date: "2021-03-17",
-    title: "Pot de départ de Sophie",
+    date: "2021-03-23",
+    title: "Salon professionnel à 09h00 le",
   },
   {
     date: "2021-03-24",
-    title: "Anniversdaire de Léo ",
+    title: "Pot de départ de Sophie à 15h00 le ",
+  },
+  {
+    date: "2021-03-24",
+    title: "Team Building à 14h00",
   },
   {
     date: "2021-03-25",
-    title: "Anniversdaire de Miguel",
+    title: "Séminaire entreprise à 10h00 le ",
   },
   {
     date: "2021-03-22",
-    title: "Présentation Network && Co",
+    title:
+      "Présentation Network && Co (Alex, Houssem, Miguel, Léo) à 09h00 au Bocal Academy le ",
+  },
+
+  {
+    date: "2021-03-22",
+    title: "Soirée Network && Co à 20h00 le ",
+  },
+
+  {
+    date: "2021-03-27",
+    title: "Evenement sportif Sophia Antipolis à 09h00 le ",
   },
 ];
 
@@ -81,11 +92,28 @@ export default {
 </script>
 
 <style scoped>
-.Agenda {
-  float: right;
-}
-
 h4 {
   padding-top: 30px;
+  font-family: "Anton", sans-serif;
+}
+
+.Agenda {
+  float: right;
+  height: auto;
+  max-width: 320px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 5px 10px #7c8395;
+  border-radius: 30px;
+  font-size: 1rem;
+  margin-top: 0px;
+  padding-top: 30px;
+  padding-bottom: 0px;
+  padding-left: 25px;
+  padding-right: 30px;
+  font-family: "Anton", sans-serif;
+}
+
+.ul {
+  padding-left: 10px;
 }
 </style>

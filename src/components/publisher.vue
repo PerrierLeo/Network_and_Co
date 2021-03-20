@@ -5,8 +5,9 @@
       <div class="toolsPublish">Outils</div>
     </div>
     <div class="publish">
+      <input v-model="title" />
       <textarea
-        v-model="textPublish"
+        v-model="content"
         id="areaPublish"
         name="areaPublish"
         rows="7"
@@ -14,6 +15,7 @@
         autocomplete="off"
         placeholder="Comment vous sentez-vous aujourd'hui?"
       ></textarea>
+      <input type="url" v-model="image" placeholder="poster une photo" />
       <div><span @click="pushPubli" class="btnPublish">Publier</span></div>
     </div>
 
@@ -27,24 +29,25 @@ export default {
   name: "publisher",
 
   data: () => ({
-    textPublish: "",
+    title: "",
+    content: "",
+    image: "",
+    date: new Date().toLocaleString(),
   }),
 
   methods: {
-    pushPubli() {
-      this.$emit("publi", { textPublish: this.textPublish });
-      this.postCloud();
-    },
-
-    postCloud: async function() {
+    pushPubli: async function() {
       const body = {
-        content: this.posts,
+        title: this.title,
+        content: this.content,
+        date: this.date,
+        image: this.image,
       };
-
       const options = {
         method: "POST",
         headers: {
-          Authorization: "bearer ",
+          "Content-Type": "application/json",
+          Authorization: "bearer " + localStorage.getItem("token"),
         },
         body: JSON.stringify(body),
       };
@@ -116,6 +119,13 @@ export default {
   padding-left: 5px;
 }
 
+.titlePost {
+  border: none;
+  border-bottom: 1px solid grey;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
 .publish {
   display: flex;
   flex-direction: column;
@@ -135,6 +145,7 @@ export default {
   right: 10px;
   padding: 1vh 1vw;
   cursor: pointer;
+  margin-top: 5vh;
 }
 .btnPublish:hover {
   background: linear-gradient(

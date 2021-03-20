@@ -2,7 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Pageconnect from "../views/Pageconnect.vue";
 import Accueil from "../views/Accueil.vue";
-import Staffs from "../views/Staff.vue";
 import Canteen from "../views/Canteen.vue";
 import Messagerie from "../views/Messagerie.vue";
 
@@ -20,11 +19,7 @@ const routes = [
     component: Accueil,
   },
 
-  {
-    path: "/staff",
-    name: "Staff",
-    component: Staffs,
-  },
+  
   {
     path: "/Canteen",
     name: "Canteen",

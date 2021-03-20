@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div v-if="loggedIn" id="nav">
+      <h1 class="titleWebSite">NETWORK & CO</h1>
       <div>
         <router-link to="/"></router-link>
         <b-button-group>
@@ -10,38 +11,37 @@
                 src="https://previews.123rf.com/images/pakkalin/pakkalin1503/pakkalin150300117/38526708-accueil-ic%C3%B4ne.jpg"
               ></b-avatar></router-link
           ></b-button>
-          <b-button><router-link to="/Staff">Membres</router-link></b-button>
           <b-button><router-link to="/Canteen">Cantine</router-link></b-button>
           <b-button><router-link to="/Ce">CE</router-link></b-button>
           <b-button v-b-modal.modal-1 @click="profil"
-            ><b-avatar :src="image"></b-avatar
+            ><b-avatar :src="profilePicture"></b-avatar
           ></b-button>
           <b-modal id="modal-1" title="Profil">
             <div>
-              <div class="my-4, displayFlex">
+              <div class="my-4">
                 <p>Nom :</p>
                 <p v-show="displayValue">{{ firstname }}</p>
                 <input v-show="cachee" v-model="firstname" />
               </div>
             </div>
-            <div class="my-4, displayFlex">
+            <div class="my-4">
               Prénom :
               <p v-show="displayValue">{{ lastname }}</p>
               <input v-show="cachee" v-model="lastname" />
             </div>
-            <div class="my-4, displayFlex">
+            <div class="my-4">
               E-mail :
               <p v-show="displayValue">{{ email }}</p>
               <input v-show="cachee" v-model="email" />
             </div>
-            <div class="my-4, displayFlex">
+            <div class="my-4">
               Poste Occupé :
               <p v-show="displayValue">{{ occupation }}</p>
               <input v-show="cachee" v-model="occupation" />
             </div>
             <div>
               Photo de profil
-              <input v-show="cachee" v-model="image" />
+              <input v-show="cachee" v-model="profilePicture" />
             </div>
             <b-avatar
               href="#bar"
@@ -66,15 +66,13 @@
 </template>
 <script>
 export default {
-  components: {},
   data: () => ({
     loggedIn: false,
     firstname: "",
     lastname: "",
     email: "",
     occupation: "",
-    image:
-      "https://previews.123rf.com/images/tanyastock/tanyastock1609/tanyastock160901582/62841748-ic%C3%B4ne-de-l-utilisateur-symbole-de-la-personne-humaine-avatar-signe-de-connexion-bouton-cercle-bleu-a.jpg",
+    profilePicture: "",
     cachee: false,
     displayValue: true,
   }),
@@ -102,6 +100,7 @@ export default {
         lastname: this.lastname,
         email: this.email,
         age: "",
+        profilePicture: this.profilePicture,
         occupation: this.occupation,
       };
       const options = {
@@ -154,6 +153,7 @@ export default {
         this.lastname = data.lastname;
         this.email = data.email;
         this.occupation = data.occupation;
+        this.profilePicture = data.profilePicture;
         console.log(data);
         return this.firstname; // Body de la réponse
       } catch (error) {
@@ -188,13 +188,17 @@ export default {
   color: #2c3e50;
 }
 
+button.btn.btn-secondary {
+  background-color: #0275d8;
+  border: none;
+}
+
 #nav {
   padding: 30px;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 5vh;
-  background-color: #02aa93;
+  justify-content: space-between;
+  height: 15vh;
+  background-color: #0275d8;
   width: auto;
 }
 
@@ -219,5 +223,15 @@ body {
 }
 .displayFlex {
   display: flex;
+}
+
+.btn-group {
+  justify-content: flex-end;
+}
+
+.titleWebSite {
+  color: white;
+  font-family: "Anton", sans-serif;
+  justify-content: flex-start;
 }
 </style>

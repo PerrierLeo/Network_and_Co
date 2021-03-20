@@ -9,13 +9,9 @@ export default {
 
 <style scoped>
 #main-container {
-  width: 20vw;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
 }
 
-#ressource {
-  text-align: center;
-}
 </style>
