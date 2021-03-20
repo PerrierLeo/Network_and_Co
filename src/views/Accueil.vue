@@ -1,23 +1,6 @@
 <template>
-  <div class="accueil">
-    <publisher />
-    <div class="publication" v-for="(elem, index) in body" :key="(index += 1)">
-      <div class="topPost">
-        <div class="user"><span>{{elem.firstname}} {{elem.lastname}}</span></div>
-        <div class="postDate">{{ elem.title }}</div>
-      </div>
-      <div class="middlePost">
-        <div class="postText">{{ elem.content }} {{elem.userId}}</div>
-      </div>
-      <div class="bottomPost">
-        <button @click="liker(elem._id)">Like</button>
-        <div @click="increaseLike" class="like">
-        <span>{{countLike}} Likes</span>
-        </div>
-      </div>
-      <comments />
-    </div>
-    <div class="Accueil">
+<div class="accueil">
+  <div class="listMember">
       <!--accordéon ressource Humaine-->
       <h3>Ressource humaine</h3>
       <div
@@ -72,12 +55,32 @@
           </b-collapse>
         </b-card>
       </div>
-      <div></div>
     </div>
+  <div class="filActu">
+    <publisher />
+    <div class="publication" v-for="(elem, index) in body" :key="(index += 1)">
+      <div class="topPost">
+        <div class="user"><span>{{elem.firstname}} {{elem.lastname}}</span></div>
+        <div class="postDate">{{ elem.title }}</div>
+      </div>
+      <div class="middlePost">
+        <div class="postText">{{ elem.content }}</div>
+      </div>
+      <div class="bottomPost">
+        <button @click="liker(elem._id)">Like</button>
+        <div @click="increaseLike" class="like">
+        <span>{{countLike}} Likes</span>
+        </div>
+      </div>
+      <comments />
+    </div>
+    </div>
+    <div class="widgets">
     <agenda />
     <cantine />
     <ce />
-  </div>
+    </div>
+</div>
 </template>
 
 <script>
@@ -169,7 +172,8 @@ export default {
     },
     
   },
-
+  
+  
   mounted: async function() {
       const options = {
         method: "GET", // Verbe
@@ -200,17 +204,26 @@ export default {
         /* En cas d'erreur lors de l'exécutino de la requête */
         console.log(error);
       }
-    },
+    }, 
   
-};
+}
 </script>
 
 <style scoped>
-.accueil {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.widgets{
+  display:flex;
+  flex-direction:column;
+}
+.accueil{
+  width:98vw;
+  display:flex;
+}
+.filActu{
+  display:flex;
+  flex-direction:column;
+  margin-left:10vw;
+  margin-right:10vw;
+  
 }
 
 .publication {
@@ -250,11 +263,14 @@ export default {
 
 .accordion,
 .accordion2 {
-  width: 25vw;
+  width: 15vw;
 }
 
 h3 {
-  width: 25vw;
+  font-family:'Anton', sans-serif;
+  color:#737373;
+  margin-top:5vh;
+  font-size:1.5rem;
 }
 
 #accordion-8 {
@@ -264,4 +280,6 @@ h3 {
 .color {
   background-color: rgb(177, 250, 135);
 }
+
+
 </style>
