@@ -10,7 +10,6 @@
                 src="https://previews.123rf.com/images/pakkalin/pakkalin1503/pakkalin150300117/38526708-accueil-ic%C3%B4ne.jpg"
               ></b-avatar></router-link
           ></b-button>
-          <b-button><router-link to="/Staff">Membres</router-link></b-button>
           <b-button><router-link to="/Canteen">Cantine</router-link></b-button>
           <b-button><router-link to="/Ce">CE</router-link></b-button>
           <b-button v-b-modal.modal-1 @click="profil"

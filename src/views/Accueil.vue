@@ -68,8 +68,8 @@ export default {
   }),
 
   /*requette sur l'api pour recuperer les user*/
-  mounted: async function() {
-    const options = {
+  beforeMount: async function() {
+    const option = {
       method: "GET", // Verbe
       headers: {
         "Content-Type": "application/json", // En-tête du type de données envoyé
@@ -82,7 +82,7 @@ export default {
       /* Envoi de la requête */
       const response = await fetch(
         "https://network-and-co-api.osc-fr1.scalingo.io/user/all",
-        options
+        option
       );
 
       console.log(response); // Réponse
