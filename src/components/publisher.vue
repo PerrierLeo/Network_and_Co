@@ -16,7 +16,9 @@
         placeholder="Comment vous sentez-vous aujourd'hui?"
       ></textarea>
       <input type="url" v-model="image" placeholder="poster une photo" />
-      <div><span @click="pushPubli" class="btnPublish">Publier</span></div>
+      <div>
+        <span @click="pushPubli" class="btnPublish">Publier</span>
+      </div>
     </div>
 
     <div class="posts"></div>
@@ -60,6 +62,7 @@ export default {
 
         const data = await response.json();
         console.log(data);
+        location.reload();
       } catch (error) {
         console.log(error);
       }
@@ -71,7 +74,7 @@ export default {
 <style scoped>
 .containerPublish {
   width: 40vw;
-  height: 36vh;
+  height: 55vh;
   overflow: hidden;
   border: 1px solid black;
   position: relative;

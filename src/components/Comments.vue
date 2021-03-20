@@ -1,14 +1,20 @@
 <template>
   <div class="areaComments">
-    <div class="listComments">Espace où se trouvent tous les commentaires</div>
-    <textarea
-      cols="20"
-      rows="1"
+    <input
+      class="commentInput"
       v-model="comment"
-      class="areaComments"
-      placeholder="Commentez ce post"
-    ></textarea>
-    <div @click="pushComment(id)" class="btnPushComment">Envoyer</div>
+      type="text"
+      placeholder="Commentez cette publication"
+    />
+
+    <div @click="pushComment(id)" class="btnPushComment">
+      <img
+        class="picSendComment"
+        width="30px"
+        height="30px"
+        src="@/assets/icons8-envoyer-message-48.png"
+      />
+    </div>
   </div>
 </template>
 
@@ -47,6 +53,7 @@ export default {
         console.log(id);
 
         const data = await response;
+        location.reload();
         console.log(data);
       } catch (error) {
         console.log(error);
@@ -57,7 +64,17 @@ export default {
 </script>
 
 <style scoped>
+.picSendComment {
+  margin-right: 10px;
+  margin-bottom: 6px;
+}
+.commentInput {
+  border: none;
+  width: 80%;
+}
 .areaComments {
+  display: flex;
+  justify-content: space-between;
   resize: none;
   margin: 10px 10px 10px 10px;
   border-radius: 15px;

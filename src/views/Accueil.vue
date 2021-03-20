@@ -41,28 +41,15 @@ export default {
 </script>
 
 <style scoped>
-.widgets {
-  display: flex;
-  flex-direction: column;
-}
 .accueil {
-  width: 98vw;
   display: flex;
-}
-.filActu {
-  display: flex;
-  flex-direction: column;
-  margin-left: 10vw;
-  margin-right: 10vw;
-}
-
-.accordion,
-.accordion2 {
-  width: 25vw;
+  width: 100%;
+  justify-content: space-between;
 }
 
 h3 {
-  font-family: "Anton", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: #737373;
   margin-top: 5vh;
   font-size: 1.5rem;

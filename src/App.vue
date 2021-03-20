@@ -11,8 +11,6 @@
                 src="https://previews.123rf.com/images/pakkalin/pakkalin1503/pakkalin150300117/38526708-accueil-ic%C3%B4ne.jpg"
               ></b-avatar></router-link
           ></b-button>
-          <b-button><router-link to="/Canteen">Cantine</router-link></b-button>
-          <b-button><router-link to="/Ce">CE</router-link></b-button>
           <b-button v-b-modal.modal-1 @click="profil"
             ><b-avatar :src="profilePicture"></b-avatar
           ></b-button>
@@ -57,7 +55,7 @@
               >Valider</b-button
             >
           </b-modal>
-          <b-button @click="logout">Logout</b-button>
+          <b-button @click="logout">Se déconnecter</b-button>
         </b-button-group>
       </div>
     </div>
@@ -163,6 +161,7 @@ export default {
     },
   },
   mounted: async function() {
+    this.profil();
     let token = localStorage.getItem("token");
     if (token !== null) {
       this.login();

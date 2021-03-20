@@ -30,14 +30,3 @@ export default {
   name: "cantine",
 };
 </script>
-
-<style scoped>
-.Cantine {
-  width: 320px;
-}
-
-.mb-2 {
-  box-shadow: 0px 5px 10px #7c8395;
-  border-radius: 30px;
-}
-</style>
