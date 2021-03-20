@@ -102,7 +102,7 @@ h4 {
   height: auto;
   max-width: 320px;
   background-color: rgb(255, 255, 255);
-  box-shadow: 0px 5px 10px #7c8395;
+  box-shadow: 0px 1px 1px #7c8395;
   border-radius: 30px;
   font-size: 1rem;
   margin-top: 0px;

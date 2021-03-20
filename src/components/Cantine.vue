@@ -31,8 +31,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.Cantine{
-  width:60vw;
-}
-</style>
+<style scoped></style>

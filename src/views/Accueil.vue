@@ -2,7 +2,7 @@
   <div class="accueil">
     <div class="listMember">
       <!--accordéon ressource Humaine-->
-      <h3>Ressource humaine</h3>
+      <h3>Ressources humaine</h3>
       <div v-for="(elem, index) in user" :key="index">
         <b-card no-body class="mb-1 ">
           <b-card-header header-tag="header" class="p-1" role="tab">
@@ -31,7 +31,6 @@
     <div class="filActu">
       <publisher />
       <publication :profilePicture="profilePicture" />
-      <!--<comments />-->
     </div>
     <div class="widgets">
       <agenda />
@@ -50,7 +49,7 @@ import Publication from "../components/Publication.vue";
 
 export default {
   name: "Accueil",
-  props: ["profilePicture"],
+  props: ["profilePicture", "firstname"],
   components: { publisher, Agenda, Cantine, Ce, Publication },
 
   data: () => ({
@@ -90,28 +89,15 @@ export default {
 </script>
 
 <style scoped>
-.widgets {
-  display: flex;
-  flex-direction: column;
-}
 .accueil {
-  width: 98vw;
   display: flex;
-}
-.filActu {
-  display: flex;
-  flex-direction: column;
-  margin-left: 10vw;
-  margin-right: 10vw;
-}
-
-.accordion,
-.accordion2 {
-  width: 15vw;
+  width: 100%;
+  justify-content: space-between;
 }
 
 h3 {
-  font-family: "Anton", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: #737373;
   margin-top: 5vh;
   font-size: 1.5rem;

@@ -7,12 +7,14 @@
     >
       <div class="topPost">
         <div class="user">
-          <span
-            >{{ elem.firstname }} {{ elem.lastname }}
-            <b-avatar :src="profilePicture"></b-avatar
-          ></span>
+          <span class="infoUserPost"
+            ><b-avatar :src="profilePicture"></b-avatar
+            ><span class="elemName"
+              >{{ elem.firstname }} {{ elem.lastname }}</span
+            >
+          </span>
         </div>
-        <div class="postDate">{{ elem.title }}</div>
+        <div class="postTitle">{{ elem.title }}</div>
       </div>
       <div class="middlePost">
         <div class="postText">{{ elem.content }}</div>
@@ -79,6 +81,24 @@ export default {
 </script>
 
 <style scoped>
+.postText {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 10px;
+}
+.elemName {
+  margin-left: 10px;
+  margin-top: 6px;
+}
+
+.postTitle {
+  margin-right: 20px;
+  background-color: #f0ad4e;
+  padding: 5px;
+  color: white;
+  border-radius: 8px;
+}
+
 .publication {
   width: 40vw;
   margin-top: 20px;
@@ -93,10 +113,9 @@ export default {
 
 .topPost {
   display: flex;
+  justify-content: space-between;
   margin-left: 1.5vh;
-  justify-content: flex-start;
-  width: 12vw;
-  padding-top: 1px;
+  width: 100%;
 }
 
 .middlePost {
