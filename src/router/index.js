@@ -3,7 +3,6 @@ import VueRouter from "vue-router";
 import Pageconnect from "../views/Pageconnect.vue";
 import Accueil from "../views/Accueil.vue";
 import Canteen from "../views/Canteen.vue";
-import Ce from "../views/Ce.vue";
 import Messagerie from "../views/Messagerie.vue";
 
 Vue.use(VueRouter);
@@ -26,11 +25,7 @@ const routes = [
     name: "Canteen",
     component: Canteen,
   },
-  {
-    path: "/Ce",
-    name: "Ce",
-    component: Ce,
-  },
+  
   {
     path: "/Messagerie",
     name: "Mssagerie",

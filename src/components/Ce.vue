@@ -33,8 +33,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.ce {
-  width: 320px;
-}
-</style>
+<style></style>
