@@ -1,14 +1,15 @@
 <template>
   <div class="accueil">
-    <h3>Ressource Humaine</h3>
-    <cardmember :service="'RH'" />
-    <h3>Service Communication</h3>
-    <cardmember :service="'Communication'" />
-    <h3>Service Commercial</h3>
-    <cardmember :service="'Commercial'" />
-    <h3>Service Comptabilité</h3>
-    <cardmember :service="'Comptabilité'" />
-    q
+    <div class="listMember">
+      <h3>Ressource Humaine</h3>
+      <cardmember :service="'RH'" />
+      <h3>Service Communication</h3>
+      <cardmember :service="'Communication'" />
+      <h3>Service Commercial</h3>
+      <cardmember :service="'Commercial'" />
+      <h3>Service Comptabilité</h3>
+      <cardmember :service="'Comptabilité'" />
+    </div>
     <div class="filActu">
       <publisher />
       <publication :profilePicture="profilePicture" />

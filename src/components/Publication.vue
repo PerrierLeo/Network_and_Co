@@ -7,11 +7,13 @@
     >
       <div class="topPost">
         <div class="user">
-          <span
-            >{{ elem.firstname }} {{ elem.lastname }}
-            <div v-for="(elem, value) in imageUser" :key="value">
-              <b-avatar src="elem.profilePicture"></b-avatar></div
-          ></span>
+          <div class="userAvatar">
+            <b-avatar src="elem.profilePicture"></b-avatar>
+          </div>
+          <div class="name">
+            {{ elem.firstname }} {{ elem.lastname }}
+            <div v-for="(elem, value) in imageUser" :key="value"></div>
+          </div>
         </div>
         <div class="postTitle">{{ elem.title }}</div>
       </div>
@@ -19,20 +21,26 @@
         <div class="postText">{{ elem.content }}</div>
       </div>
       <div v-if="elem.image"><img class="imagePubli" :src="elem.image" /></div>
-      <div class="bottomPost"></div>
-      <like :id="elem._id" />
-      <div v-for="(elem, index) in elem.likes" :key="index + '1'">
-        {{ elem.firstname }} {{ elem.lastname }}
-        <img class="iLike" src="../assets/jaime.png" />
+      <div class="bottomPost">
+        <like :id="elem._id" />
+        <div v-for="(elem, index) in elem.likes" :key="index + '1'">
+          {{ elem.firstname }} {{ elem.lastname }}
+          <img class="iLike" src="../assets/jaime.png" />
+        </div>
       </div>
       <!-- commentaire -->
-      <comments :id="elem._id" />
-      <div
-        class="comments"
-        v-for="(elem, index) in elem.comments"
-        :key="'3' + index"
-      >
-        {{ elem.firstname }} {{ elem.lastname }} : {{ elem.content }}
+      <div class="listComments">
+        <comments :id="elem._id" />
+        <div
+          class="comments"
+          v-for="(elem, index) in elem.comments"
+          :key="'3' + index"
+        >
+          <div class="nameComment">
+            {{ elem.firstname }} {{ elem.lastname }}
+          </div>
+          <div class="contentComment">{{ elem.content }}</div>
+        </div>
       </div>
     </div>
   </div>
@@ -96,6 +104,14 @@ export default {
 </script>
 
 <style scoped>
+.nameComment {
+  font-weight: bold;
+  justify-content: flex-start;
+  font-size: 0.7rem;
+}
+.likeName {
+  margin-top: 5px;
+}
 .postText {
   display: flex;
   justify-content: flex-start;
@@ -117,7 +133,7 @@ export default {
 .publication {
   width: 40vw;
   margin-top: 20px;
-  padding: 10px 0px 10px 0px;
+  padding: 10px 0px 1px 0px;
   height: auto;
   overflow: hidden;
   border: 1px solid #d6d6d6;
@@ -142,10 +158,16 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   margin-right: 1.5vh;
+  margin-top: 2vh;
+  background-color: #f2f0f0;
+  width: 100%;
+  padding: 10px;
 }
 
 .user {
   font-weight: bold;
+  display: flex;
+  width: 20vw;
 }
 
 .comments {
@@ -154,10 +176,11 @@ export default {
   padding: 10px 0px 10px 0px;
   height: auto;
   overflow: hidden;
-  border: 1px solid #d6d6d6;
-  position: relative;
   border-radius: 6px;
-  background-color: white;
+  background-color: #f2f0f0;
+  width: 98%;
+  margin-bottom: 20px;
+  margin-left: 5px;
 }
 .iLike {
   width: 1vw;
@@ -165,7 +188,13 @@ export default {
 }
 
 .imagePubli {
-  height: 300px;
-  width: 300px;
+  margin-top: 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.name {
+  margin-left: 10px;
+  margin-top: 8px;
 }
 </style>

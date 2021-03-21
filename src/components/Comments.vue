@@ -69,8 +69,14 @@ export default {
   margin-bottom: 6px;
 }
 .commentInput {
+  margin-bottom: 8px;
   border: none;
   width: 80%;
+  background-color: #f7f7f7;
+}
+
+.commentInput:focus {
+  outline: none;
 }
 .areaComments {
   display: flex;

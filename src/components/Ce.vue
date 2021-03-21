@@ -15,13 +15,6 @@
           les mêmes centres d’intérêt, puissent trouver leur bonheur. Une offre
           large et tarif avantageux.
         </b-card-text>
-
-        <b-button
-          href="https://www.lemagducse.com/dossiers-cat-2-idees.html"
-          target="_blank"
-          variant="primary"
-          >Des idées loisirs</b-button
-        >
       </b-card>
     </div>
   </div>

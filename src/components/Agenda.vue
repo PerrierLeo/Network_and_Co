@@ -18,9 +18,7 @@
         <li v-for="(event, index) in dayevents" :key="index">
           {{ event.title }}
           {{ event.date }}
-
-          <h4>Cantine</h4>
-          <img :src="event.image" />
+          <img class="img" :src="event.image" />
         </li>
       </ul>
     </div>
@@ -32,13 +30,25 @@ const events = [
   {
     date: "2021-03-23",
     title: "Salon professionnel à 09h00 le",
-    image:
-      "https://www.vinci-autoroutes.com/sites/default/files/2019-09/festival-dromadaire-janvry.png",
   },
+  {
+    date: "2021-03-23",
+    title: "Plat du jour 'choucroute alsacienne' ",
+    image:
+      "https://www.alsace-terroir.com/medias/images/recettes/1-choucroute-a-l-alsacienne-1.jpg",
+  },
+
   {
     date: "2021-03-24",
     title: "Pot de départ de Sophie à 15h00 le ",
   },
+  {
+    date: "2021-03-24",
+    title: "Plat du jour 'Gambas grillées' ",
+    image:
+      "https://img.cuisineaz.com/610x610/2015-10-27/i82390-gambas-grillees-de-michele.jpg",
+  },
+
   {
     date: "2021-03-24",
     title: "Team Building à 14h00",
@@ -48,6 +58,12 @@ const events = [
     title: "Séminaire entreprise à 10h00 le ",
   },
   {
+    date: "2021-03-25",
+    title: "Plat du jour 'Salade niçoise' ",
+    image:
+      "https://cuisine.nessma.tv/uploads/6/2020-04/16b51243b507d8c8fe461aacdfd5eee3.jpg",
+  },
+  {
     date: "2021-03-22",
     title:
       "Présentation Network && Co (Alex, Houssem, Miguel, Léo) à 09h00 au Bocal Academy le ",
@@ -55,7 +71,24 @@ const events = [
 
   {
     date: "2021-03-22",
+    title: "Plat du jour 'Couscous Royal'",
+    image:
+      "https://www.petitsplatsentreamis.com/wp-content/uploads/2019/11/Couscous-royal.jpg",
+  },
+  {
+    date: "2021-03-22",
     title: "Soirée Network && Co à 20h00 le ",
+  },
+
+  {
+    date: "2021-03-26",
+    title: "Plat du jour 'Roti de boeuf' ",
+    image: "https://cdn.lacuisinedannie.com/images/1052.jpg",
+  },
+
+  {
+    date: "2021-03-27",
+    title: "Evenement sportif Sophia Antipolis à 09h00 le ",
   },
 
   {
@@ -120,5 +153,8 @@ h4 {
 
 .ul {
   padding-left: 10px;
+}
+.img {
+  width: 250px;
 }
 </style>
