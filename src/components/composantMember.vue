@@ -68,4 +68,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.colortest {
+  background-color: blue;
+}
+</style>
