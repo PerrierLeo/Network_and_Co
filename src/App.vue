@@ -161,6 +161,7 @@ export default {
     },
   },
   mounted: async function() {
+    this.profil();
     let token = localStorage.getItem("token");
     if (token !== null) {
       this.login();

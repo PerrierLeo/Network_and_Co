@@ -5,7 +5,11 @@
       <div class="toolsPublish">Outils</div>
     </div>
     <div class="publish">
-      <input v-model="title" />
+      <input
+        class="titlePost"
+        v-model="title"
+        placeholder="Donnez un nom à votre publication..."
+      />
       <textarea
         v-model="content"
         id="areaPublish"
@@ -15,8 +19,15 @@
         autocomplete="off"
         placeholder="Comment vous sentez-vous aujourd'hui?"
       ></textarea>
-      <input type="url" v-model="image" placeholder="poster une photo" />
-      <div><span @click="pushPubli" class="btnPublish">Publier</span></div>
+      <input
+        class="picPost"
+        type="url"
+        v-model="image"
+        placeholder="Insérez ici un lien d'image"
+      />
+      <div>
+        <span @click="pushPubli" class="btnPublish">Publier</span>
+      </div>
     </div>
 
     <div class="posts"></div>
@@ -60,6 +71,7 @@ export default {
 
         const data = await response.json();
         console.log(data);
+        location.reload();
       } catch (error) {
         console.log(error);
       }
@@ -97,6 +109,18 @@ export default {
   margin-right: 10px;
 }
 
+.picPost {
+  border: none;
+  border-bottom: 1px solid grey;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.picPost::placeholder {
+  color: lightgrey;
+  font-style: italic;
+}
+
 #areaPublish {
   resize: none;
   margin: 10px 10px 10px 10px;
@@ -107,7 +131,9 @@ export default {
   padding-top: 10px;
 }
 
-#areaPublish:focus {
+#areaPublish:focus,
+.picPost,
+.titlePost {
   outline: none;
 }
 
@@ -123,6 +149,11 @@ export default {
   border-bottom: 1px solid grey;
   margin-left: 1vw;
   margin-right: 1vw;
+}
+
+.titlePost::placeholder {
+  color: lightgrey;
+  font-style: italic;
 }
 
 .publish {

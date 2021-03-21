@@ -30,5 +30,3 @@ export default {
   name: "cantine",
 };
 </script>
-
-<style scoped></style>

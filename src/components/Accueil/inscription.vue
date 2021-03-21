@@ -23,7 +23,7 @@
         <option value="RH">RH</option>
         <option value="Communication">Communication</option>
         <option value="Commercial">Commercial</option>
-        <option value="Compta">Compta</option>
+        <option value="Comptabilité">Comptabilité</option>
       </select>
       <button class="btnSubmit" type="submit" @click="callAjouter">valider</button>
     </form>

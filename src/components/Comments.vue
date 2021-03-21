@@ -53,6 +53,7 @@ export default {
         console.log(id);
 
         const data = await response;
+        location.reload();
         console.log(data);
       } catch (error) {
         console.log(error);
@@ -71,7 +72,11 @@ export default {
   margin-bottom: 8px;
   border: none;
   width: 80%;
-  color: #f7f7f7;
+  background-color: #f7f7f7;
+}
+
+.commentInput:focus {
+  outline: none;
 }
 .areaComments {
   display: flex;
