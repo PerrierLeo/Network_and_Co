@@ -68,4 +68,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.card-header {
+  background-color: #0275d8;
+}
+.btn-info {
+  background-color: #0275d8;
+}
+</style>
