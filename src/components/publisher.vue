@@ -2,7 +2,6 @@
   <div class="containerPublish">
     <div class="topPublish">
       <div class="userPublish"></div>
-      <div class="toolsPublish">Outils</div>
     </div>
     <div class="publish">
       <input

@@ -23,9 +23,13 @@
       <div v-if="elem.image"><img class="imagePubli" :src="elem.image" /></div>
       <div class="bottomPost">
         <like :id="elem._id" />
-        <div v-for="(elem, index) in elem.likes" :key="index + '1'">
+        <div
+          class="partLike"
+          v-for="(elem, index) in elem.likes"
+          :key="index + '1'"
+        >
           {{ elem.firstname }} {{ elem.lastname }}
-          <img class="iLike" src="../assets/jaime.png" />
+          <img class="iLike" src="../assets/jaime.png" />,
         </div>
       </div>
       <!-- commentaire -->
@@ -109,8 +113,13 @@ export default {
   justify-content: flex-start;
   font-size: 0.7rem;
 }
-.likeName {
+.partLike {
+  font-size: 0.8rem;
+  margin-left: 5px;
   margin-top: 5px;
+}
+.likeName {
+  margin-top: 7px;
 }
 .postText {
   display: flex;
@@ -156,7 +165,6 @@ export default {
 .bottomPost {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   margin-right: 1.5vh;
   margin-top: 2vh;
   background-color: #f2f0f0;

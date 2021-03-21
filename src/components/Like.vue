@@ -47,7 +47,6 @@ export default {
 
 <style scoped>
 .like {
-  padding: 5px;
   background: linear-gradient(
     90deg,
     rgba(69, 163, 231, 1) 0%,

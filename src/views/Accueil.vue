@@ -3,16 +3,18 @@
     <div class="listMember">
       <h3>Ressource Humaine</h3>
       <cardmember :service="'RH'" />
-      <h3>Service Communication</h3>
+      <h3 class="marginTop">Service Communication</h3>
       <cardmember :service="'Communication'" />
-      <h3>Service Commercial</h3>
+      <h3 class="marginTop">Service Commercial</h3>
       <cardmember :service="'Commercial'" />
-      <h3>Service Comptabilité</h3>
+      <h3 class="marginTop">Service Comptabilité</h3>
       <cardmember :service="'Comptabilité'" />
     </div>
     <div class="filActu">
       <publisher />
-      <publication :profilePicture="profilePicture" />
+      <div class="scroller">
+        <publication :profilePicture="profilePicture" />
+      </div>
     </div>
     <div class="widgets">
       <agenda />
@@ -42,18 +44,33 @@ export default {
 </script>
 
 <style scoped>
+.scroller {
+  width: 100%;
+  height: 150vh;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+}
+
 .accueil {
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
+.list-member {
+  justify-content: flex-start;
+}
+.marginTop {
+  margin-top: 3vh;
+}
 
 h3 {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  color: #737373;
-  margin-top: 5vh;
+  color: #303030;
+
   font-size: 1.5rem;
+  align-items: flex-start;
 }
 
 #accordion-8 {

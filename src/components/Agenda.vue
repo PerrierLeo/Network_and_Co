@@ -132,7 +132,8 @@ export default {
 <style scoped>
 h4 {
   padding-top: 30px;
-  font-family: "Anton", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .Agenda {
@@ -141,14 +142,15 @@ h4 {
   max-width: 320px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 1px 1px #7c8395;
-  border-radius: 30px;
   font-size: 1rem;
   margin-top: 0px;
   padding-top: 30px;
   padding-bottom: 0px;
+  margin-bottom: 20px;
   padding-left: 25px;
   padding-right: 30px;
-  font-family: "Anton", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .ul {
