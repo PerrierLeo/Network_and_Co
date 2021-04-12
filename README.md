@@ -1,11 +1,11 @@
 # Network_and_Co
 
-<p> Network&Co est un réseau interne pour entreprise, le but étant de faire circuler l'information le plus efficacement possible.
+<ul> Network&Co est un réseau interne pour entreprise, le but étant de faire circuler l'information le plus efficacement possible.
   les fonctionnalités sont les suivantes : 
-  - l'inscription, la connexion & la deconnexion, en faisant des requêtes vers l'API, et en stockant un token de connexion.
-  - la publication de post, le like de post, et commenter des post.
-  - l'édition du profil permmettant de modifier sa catégorie, nom, prénom, mail, mot de passe et d'ajouter une photo de profil.
-  </p>
+  <li>- l'inscription, la connexion & la deconnexion, en faisant des requêtes vers l'API, et en stockant un token de connexion.</li>
+  <li>- la publication de post, le like de post, et commenter des post.</li>
+  <li>- l'édition du profil permmettant de modifier sa catégorie, nom, prénom, mail, mot de passe et d'ajouter une photo de profil.</li>
+  </ul>
 <h2> Page de connection </h2>
 <img src='./network&co_connection.png'>
 
