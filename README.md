@@ -9,10 +9,10 @@
   </ul>
   
 <h2> Page de connection </h2>
-<img width="1043" alt="network co_connection" src="https://user-images.githubusercontent.com/81886172/114458193-2e326900-9bdf-11eb-8c3a-7b1af663555b.png">
+<img width="1237" alt="network co_subscribe" src="https://user-images.githubusercontent.com/81886172/114458204-31c5f000-9bdf-11eb-8dae-157c93e7e48e.png">
 
 <h2> Page d'inscription </h2>
-<img width="1237" alt="network co_subscribe" src="https://user-images.githubusercontent.com/81886172/114458204-31c5f000-9bdf-11eb-8dae-157c93e7e48e.png">
+<img width="1043" alt="network co_connection" src="https://user-images.githubusercontent.com/81886172/114458193-2e326900-9bdf-11eb-8c3a-7b1af663555b.png">
 
 <h2> Fil d'acualité </h2>
 <img width="1282" alt="network co_home" src="https://user-images.githubusercontent.com/81886172/114458263-46a28380-9bdf-11eb-987a-84b23822b263.png">
